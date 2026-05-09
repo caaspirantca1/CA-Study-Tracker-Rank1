@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>CA RankOS Widget</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#080b16;color:#e8ecf8;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(124,106,255,.08),transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(56,189,248,.06),transparent 50%);pointer-events:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ring{from{stroke-dashoffset:440}to{stroke-dashoffset:var(--t)}}
+
+.wc{width:100%;max-width:380px;position:relative;z-index:1}
+.wh{text-align:center;margin-bottom:18px;animation:fadeUp .4s ease}
+.wl{display:inline-flex;align-items:center;gap:8px}
+.wli{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#7c6aff,#38bdf8);display:flex;align-items:center;justify-content:center;font-size:.6rem;color:#fff;font-weight:700;box-shadow:0 2px 10px rgba(124,106,255,.35)}
+.wlt{font-size:1rem;font-weight:800;letter-spacing:-.03em}
+.wsu{font-family:'IBM Plex Mono',monospace;font-size:.55rem;color:#556080;text-transform:uppercase;letter-spacing:.08em;margin-top:3px}
+
+.wr{background:rgba(17,22,40,.8);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:20px;text-align:center;margin-bottom:10px;backdrop-filter:blur(12px);animation:fadeUp .4s ease .1s both;position:relative;overflow:hidden}
+.wr::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7c6aff,#38bdf8)}
+.wrw{position:relative;width:150px;height:150px;margin:0 auto 14px}
+.wrw svg{transform:rotate(-90deg)}
+.wrt{fill:none;stroke:rgba(255,255,255,.05);stroke-width:8}
+.wrf{fill:none;stroke:url(#wg);stroke-width:8;stroke-linecap:round;stroke-dasharray:440;stroke-dashoffset:440;animation:ring 1.5s ease .5s forwards}
+.wrc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.wrv{font-size:1.8rem;font-weight:800;line-height:1;letter-spacing:-.03em}
+.wrl{font-family:'IBM Plex Mono',monospace;font-size:.52rem;color:#556080;text-transform:uppercase;margin-top:2px}
+.wgt{font-size:.82rem;font-weight:700}
+.wgs{font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:#8a94b8;margin-top:3px}
+
+.wstats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.wst{background:rgba(17,22,40,.8);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:12px;backdrop-filter:blur(12px);animation:fadeUp .4s ease both;position:relative;overflow:hidden}
+.wst::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:.6}
+.wst.p::before{background:linear-gradient(90deg,#7c6aff,#38bdf8)}.wst.g::before{background:#34d399}.wst.a::before{background:#fbbf24}.wst.c::before{background:#38bdf8}
+.wsi{font-size:.7rem;margin-bottom:6px}.wsv{font-size:1.1rem;font-weight:800;line-height:1}.wsl{font-family:'IBM Plex Mono',monospace;font-size:.5rem;color:#556080;text-transform:uppercase;margin-top:2px}
+
+.wcd{background:rgba(17,22,40,.8);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:12px 14px;backdrop-filter:blur(12px);animation:fadeUp .4s ease .4s both;display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.wcdl{display:flex;align-items:center;gap:8px}
+.wcdi{width:32px;height:32px;border-radius:8px;background:rgba(251,191,36,.12);color:#fbbf24;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.wcdv{font-size:1.2rem;font-weight:800;line-height:1}
+.wcdlb{font-family:'IBM Plex Mono',monospace;font-size:.5rem;color:#556080;text-transform:uppercase;margin-top:1px}
+.wcdr{text-align:right}.wcrd{font-size:.7rem;font-weight:600}.wcrs{font-family:'IBM Plex Mono',monospace;font-size:.52rem;color:#8a94b8}
+
+.wimp{background:rgba(17,22,40,.8);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:12px 14px;backdrop-filter:blur(12px);animation:fadeUp .4s ease .45s both;margin-bottom:10px}
+.wimt{font-size:.7rem;font-weight:700;margin-bottom:8px;display:flex;justify-content:space-between}
+.wimt span{font-family:'IBM Plex Mono',monospace;font-size:.55rem;color:#8a94b8}
+.wimr{display:flex;align-items:center;gap:6px;margin-bottom:5px}
+.wimr:last-child{margin-bottom:0}
+.wimic{font-size:.75rem;width:18px;text-align:center}
+.wimn{font-size:.62rem;font-weight:600;flex:1}
+.wimtg{padding:1px 5px;border-radius:3px;font-size:.48rem;font-family:'IBM Plex Mono',monospace;font-weight:600}
+.wimtg.vvi{background:rgba(251,113,133,.15);color:#fb7185}.wimtg.vi{background:rgba(251,191,36,.15);color:#fbbf24}
+.wimpc{font-family:'IBM Plex Mono',monospace;font-size:.58rem;font-weight:600;width:28px;text-align:right}
+
+.wbtn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:11px;border-radius:12px;background:linear-gradient(135deg,#7c6aff,#6554e0);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;font-weight:700;border:none;cursor:pointer;transition:all .2s;animation:fadeUp .4s ease .5s both}
+.wbtn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(124,106,255,.35)}
+.wrfb{text-align:center;margin-top:10px;animation:fadeUp .4s ease .6s both}
+.wrfb button{font-family:'IBM Plex Mono',monospace;font-size:.55rem;color:#556080;background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:6px}
+.wrfb button:hover{color:#7c6aff}
+.wrft{font-family:'IBM Plex Mono',monospace;font-size:.5rem;color:#363f5a;margin-top:2px}
+</style>
+</head>
+<body>
+<div class="wc">
+<div class="wh"><div class="wl"><div class="wli">CA</div><div class="wlt">CA RankOS</div></div><div class="wsu">Rank One Widget</div></div>
+<div class="wr">
+<div class="wrw"><svg viewBox="0 0 160 160" width="150" height="150"><defs><linearGradient id="wg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c6aff"/><stop offset="100%" stop-color="#38bdf8"/></linearGradient></defs><circle class="wrt" cx="80" cy="80" r="70"/><circle class="wrf" id="rF" cx="80" cy="80" r="70"/></svg><div class="wrc"><div class="wrv" id="wRR">--%</div><div class="wrl">Rank Ready</div></div></div>
+<div class="wgt" id="wGr">Loading&hellip;</div><div class="wgs" id="wPr">Calculating&hellip;</div>
+</div>
+<div class="wstats">
+<div class="wst p" style="animation-delay:.15s"><div class="wsi">&#9201;</div><div class="wsv" id="wTd">0h</div><div class="wsl">Today</div></div>
+<div class="wst g" style="animation-delay:.2s"><div class="wsi">&#128293;</div><div class="wsv" id="wSt">0d</div><div class="wsl">Streak</div></div>
+<div class="wst a" style="animation-delay:.25s"><div class="wsi">&#128200;</div><div class="wsv" id="wWk">0h</div><div class="wsl">Week</div></div>
+<div class="wst c" style="animation-delay:.3s"><div class="wsi">&#9678;</div><div class="wsv" id="wMk">0%</div><div class="wsl">Mock Avg</div></div>
+</div>
+<div class="wcd"><div class="wcdl"><div class="wcdi">&#128197;</div><div><div class="wcdv" id="wDy">--</div><div class="wcdlb">Days Left</div></div></div><div class="wcdr"><div class="wcrd" id="wEx">--</div><div class="wcrs">CA Final Exam</div></div></div>
+<div class="wimp"><div class="wimt">Priority Chapters <span id="wVC">0 VVI</span></div><div id="wIL"></div></div>
+<button class="wbtn" onclick="location.href='./index.html'">&#9670; Open CA RankOS</button>
+<div class="wrfb"><button onclick="ld()">&#8635; Refresh</button><div class="wrft" id="wRT"></div></div>
+</div>
+<script>
+const SB=[{id:'afr',ic:'\u{1F4CA}',co:'AFR'},{id:'afm',ic:'\u{1F4B9}',co:'AFM'},{id:'cost',ic:'\u2699',co:'Costing'},{id:'tax',ic:'\u{1F3DB}',co:'Tax'},{id:'law',ic:'\u2696',co:'Law'},{id:'audit',ic:'\u{1F50D}',co:'Audit'},{id:'sm',ic:'\u{1F3AF}',co:'SM'},{id:'mics',ic:'\u{1F4BB}',co:'MICS'}];
+function ld(){
+let S;try{const d=localStorage.ca_rankos_final;if(!d){document.getElementById('wGr').textContent='Open the app first';return}S=JSON.parse(d)}catch(e){return}
+const td=new Date().toISOString().split('T')[0],ed=S.examDate||'2026-09-01',dl=Math.max(0,Math.ceil((new Date(ed)-new Date())/864e5));
+const th=S.logs.filter(l=>l.date===td).reduce((a,c)=>a+c.hrs,0);
+const ws=new Date(Date.now()-7*864e5).toISOString().split('T')[0],wh=S.logs.filter(l=>l.date>=ws).reduce((a,c)=>a+c.hrs,0);
+const ds=[...new Set(S.logs.map(l=>l.date))].sort().reverse();let st=0;for(let i=0;i<365;i++){const d=new Date(Date.now()-i*864e5).toISOString().split('T')[0];if(ds.includes(d))st++;else if(i>0)break}
+const ms=S.mocks||[],ma=ms.length?Math.round(ms.reduce((a,c)=>a+c.pct,0)/ms.length):0;
+function sc(id){const ch=S.subs[id]?.chs||[];if(!ch.length)return 0;return Math.round(ch.reduce((a,c)=>a+(c.done?100:(c.lec*.6+c.prac*.4)),0)/ch.length)}
+const sa=['afr','afm','cost','tax','law','audit','sm','mics'].map(id=>sc(id)),ac=Math.round(sa.reduce((a,c)=>a+c,0)/sa.length);
+const tf=Math.min(100,Math.round((1-Math.max(0,dl-30)/365)*100)),rr=Math.round(ac*.35+ma*.35+tf*.15+Math.min(st,30)*.15);
+document.getElementById('wRR').textContent=rr+'%';document.getElementById('wTd').textContent=th.toFixed(1)+'h';document.getElementById('wSt').textContent=st+'d';document.getElementById('wWk').textContent=wh.toFixed(1)+'h';document.getElementById('wMk').textContent=ma+'%';document.getElementById('wDy').textContent=dl;
+document.getElementById('wEx').textContent=new Date(ed).toLocaleDateString('en-IN',{month:'short',day:'numeric',year:'numeric'});
+const h=new Date().getHours(),gr=h<5?'Late night study':h<12?'Good morning':h<17?'Good afternoon':h<21?'Good evening':'Night owl';
+document.getElementById('wGr').textContent=gr;document.getElementById('wPr').textContent=ac+'% complete \u00B7 '+dl+' days left';
+const ci=2*Math.PI*70,off=ci-(rr/100)*ci,rf=document.getElementById('rF');rf.style.strokeDasharray=ci;rf.style.setProperty('--t',off);rf.style.strokeDashoffset=ci;rf.style.animation='none';rf.offsetHeight;rf.style.animation='ring 1.5s ease .3s forwards';
+let vc=0;const ih=[];
+SB.forEach(s=>{const chs=S.subs[s.id]?.chs||[];chs.forEach(ch=>{if(ch.importance==='VVI'){vc++;if(ih.length<5)ih.push({ic:s.ic,nm:ch.name.length>22?ch.name.slice(0,22)+'..':ch.name,co:s.co,pc:ch.done?100:Math.round(ch.lec*.6+ch.prac*.4)})}})});
+document.getElementById('wVC').textContent=vc+' VVI';
+document.getElementById('wIL').innerHTML=ih.length?ih.map(x=>`<div class="wimr"><div class="wimic">${x.ic}</div><div class="wimn">${x.nm}</div><div class="wimtg vvi">VVI</div><div class="wimpc" style="color:#fb7185">${x.pc}%</div></div>`).join(''):'<div style="text-align:center;font-size:.6rem;color:#556080;padding:6px">No VVI chapters yet</div>';
+document.getElementById('wRT').textContent='Updated '+new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'})
+}
+ld();setInterval(ld,30000);
+</script>
+</body>
+</html>
